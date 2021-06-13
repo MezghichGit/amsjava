@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +18,9 @@ public class HomeController {
 	static ArrayList<Candidat> lc;
 	static {
 		lc = new ArrayList<>();
-		Candidat c1 = new Candidat(1,"Naouel","naouel@gmail.com","11111111");
-		Candidat c2 = new Candidat(2,"Sameh","samed@gmail.com","22222222");
-		Candidat c3 = new Candidat(3,"Amine","amine@gmail.com","33333333");
+		Candidat c1 = new Candidat(0,"Naouel","naouel@gmail.com","11111111");
+		Candidat c2 = new Candidat(1,"Sameh","samed@gmail.com","22222222");
+		Candidat c3 = new Candidat(2,"Amine","amine@gmail.com","33333333");
 		lc.add(c1);
 		lc.add(c2);
 		lc.add(c3);
@@ -72,5 +73,22 @@ public class HomeController {
 		//return "infos : "+id+" "+nom+" "+email+" "+tel;
 		return "redirect:candidats";
 	}
+	
+	@GetMapping("/show/{idC}")
+	@ResponseBody
+	public String show(@PathVariable("idC")int id)
+	{
+		return "ID : "+id;
+		//return"home/show";
+	}
+	
+	@GetMapping("/delete/{idC}")
+	public String delete(@PathVariable("idC")int id)
+	{
+		lc.remove(id);
+		return "redirect:../candidats";
+	}
+	
+	
 
 }
