@@ -17,21 +17,24 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@NotBlank(message = "Label is mandatory")
 	@Column(name = "label")
 	private String label;
-	
-	
+
 	@Column(name = "price")
 	private float price;
+
+	@Column(name = "picture")
+	private String picture;
 
 	public Article() {
 	}
 
-	public Article(String label, float price) {
+	public Article(String label, float price, String picture) {
 		this.price = price;
 		this.label = label;
+		this.picture = picture;
 	}
 
 	public void setId(long id) {
@@ -71,4 +74,14 @@ public class Article {
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
+	public String getPicture() {
+		return picture;
+	}
+
+	
 }
