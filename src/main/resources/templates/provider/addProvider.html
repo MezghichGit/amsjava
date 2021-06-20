@@ -24,7 +24,9 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 			<div class="card-body">
 				<div class="col-md-12">
 					<form action="#" th:action="@{/provider/add}"
-						th:object="${provider}" method="post">
+						th:object="${provider}" method="post"
+						enctype="multipart/form-data"
+						>
 						<div class="row">
 							<div class="form-group col-md-10">
 								<label for="name" class="col-formlabel">Name</label> <input
@@ -48,6 +50,13 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 									th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
 									class="textdanger"></span>
 							</div>
+							
+							<div class="form-group col-md-10">
+										<label for="logo" class="col-formlabel">Logo</label> <input
+											class="form-control" type="file" id="logo" name="files" multiple>
+									</div>
+									
+									
 							<div class="col-md-6">
 								<input type="submit" class="btn btn-primary"
 									value="Add Provider">

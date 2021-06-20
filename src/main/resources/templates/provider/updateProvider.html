@@ -23,7 +23,9 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 			<div class="card-body">
 				<div class="col-md-8">
 					<form action="#" th:action="@{/provider/update}"
-						th:object="${provider}" method="post">
+						th:object="${provider}" method="post"
+						enctype="multipart/form-data"
+						>
 						
 						
 						<input type="hidden" th:field="*{id}" />
@@ -51,6 +53,18 @@ MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 									th:if="${#fields.hasErrors('address')}" th:errors="address"
 									class="text-danger"></span>
 							</div>
+							
+							<div class="form-group col-md-8">
+							<label for="Oldlogo" class="colform-label">Old Logo</label>
+							<img title="Provider" alt="ImageProvider" th:src="@{'/images/providers/'+ ${provider.logo}}"
+									width="50" height="50" />
+									
+							<div class="form-group col-md-10">
+										<label for="newlogo" class="col-formlabel">New Logo</label> <input
+											class="form-control" type="file" id="newlogo" name="files" multiple>
+									</div>
+							</div>		
+									
 							<div class="form-group col-md-8">
 								<input type="submit" class="btn
 btn-primary"
