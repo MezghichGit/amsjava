@@ -87,6 +87,7 @@ public class AccountController {
 	void sendEmail(String email, boolean state) {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(email);
+		
 		if(state == true)
 		{
 		msg.setSubject("Account Has Been Activated");
